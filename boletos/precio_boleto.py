@@ -1,22 +1,22 @@
-edad = int(input("ingresa la edad del visitante: "))
-estudiante = input("es estudiante (si/no): ")
+edad = int(input("Ingresa la edad del visitante: "))
+while edad < 0:
+    print("Edad no valida, no se aceptan edades negativas.")
+    edad = int(input("Ingresa la edad del visitante: "))
 
-def precioinicial(edad):
-    if edad < 12:
-        return 40
-    elif edad < 60:
-        return 100
-    else:
-        return 60
+estudiante = input("Es estudiante (si/no): ").strip().lower()
 
-preciofinal = precioinicial(edad)
-print("el precio inicial segun su edad es:", preciofinal)
-
-if estudiante == "si":
-    descuento = preciofinal * 0.25
+if edad < 12:
+    precio = 40
+elif edad <= 59:
+    precio = 100
 else:
-    descuento = 0
+    precio = 60
 
-total = preciofinal - descuento
-print("el descuento es:", descuento)
-print("el total con descuento es:", total)
+descuento = 0
+if estudiante in ("si", "sí") and 12 <= edad <= 59:
+    descuento = precio * 0.25
+
+total = precio - descuento
+print(f"Precio inicial: ${precio:.2f}")
+print(f"Descuento: ${descuento:.2f}")
+print(f"Precio final: ${total:.2f}")
